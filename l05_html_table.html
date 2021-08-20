@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>table</title>
+  <style>
+    body{
+      margin: 0;
+      background: powderblue;
+    }
+    h1{
+      text-align: center;
+      margin: 0;
+      color: white;
+      background: black;
+    }
+    table{
+      width: 95%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: auto;
+      border: 1px solid black;
+    }
+    table tr th{
+      background: darkgray;
+    }
+    table tr td{
+      background: white;
+      padding: 10px;
+      border: 1px solid black;
+    }
+    /* testTable */
+    .testTable{
+      background: white;
+      border: 2px solid red;
+    }
+    .testTable tr td{
+      border: 1px solid black;
+    }
+    .testTable tr th{
+      border: 2px solid red;
+    }
+    /* tableStudy */
+    .tableStudy, .tableStudy tr, .tableStudy td{
+      border-collapse:separate;
+    }
+    .tableStudy tr td{
+      border: 1px solid black;
+    }
+    .tableStudy th{
+      background: black;
+      color: white
+    }
+    .tableStudy tr:nth-child(odd){
+      /* nth-child(지정수) 지정수=1,2,3..., odd(홀수), even(짝수)  */
+      color: red;
+    }
+    .tableStudy tr:hover{
+      background: gray;
+    }
+  </style>
+  <script type="text/javascript">
+    function myFun(){
+      document.getElementsByClassName("city")[0].style.color="red";
+      let x = document.getElementsByClassName("city");
+      console.log(x);
+    }
+    let x = document.getElementsByClassName("city");
+    console.log(x);
+  </script>
+</head>
+<body>
+  <h1>HTML table</h1>
+  <div class="city" onclick="myFun()">1</div>
+  <div class="city">2</div>
+  <div class="city">3</div>
+  <hr>
+  <table>
+    <caption><h3>기본 테이블</h3></caption>
+    <tr>
+      <th>이름</th>
+      <th>나이</th>
+      <th>성별</th>
+      <th>전화번호</th>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>20</td>
+      <td>남</td>
+      <td>010-1234-1234</td>
+    </tr>
+    <tr>
+      <td>하니</td>
+      <td>30</td>
+      <td>여</td>
+      <td>010-1514-4567</td>
+    </tr>
+    <tr>
+      <td>철수</td>
+      <td>19</td>
+      <td>남</td>
+      <td>010-6431-2544</td>
+    </tr>
+  </table>
+  <!-- table.testTable>(tr>th*3)>tr*2>td*3 -->
+  <!-- html document의 유일한 선택자(중복될 수 없다.) -->
+  <br><hr>
+  <table class="testTable">
+    <caption><h3>시멘틱 테이블</h3></caption>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>성별</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>홍길동</td>
+        <td>10</td>
+        <td>남</td>
+      </tr>
+      <tr>
+        <td>하니</td>
+        <td>43</td>
+        <td>여</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="tableStudy" border="1">
+    <caption><h3>테이블과 관련된 태그들</h3></caption>
+      <thead>
+        <tr>
+          <th>태그 이름(tag)</th>
+          <th>정의(description)</th>
+        </tr>
+      </thead>
+      <tbod>
+        <tr>
+          <td><italic>table</italic></td>
+          <td>데이터를 행과 열로 정리하는 표</td>
+        </tr>
+        <tr>
+          <td>tr</td>
+          <td>테이블의 행</td>
+        </tr>
+        <tr>
+          <td>td</td>
+          <td>데이터 셀로 왼쪽 정렬이 된다.</td>
+        </tr>
+        <tr>
+          <td>th</td>
+          <td>헤더 셀로 중앙 정렬되고 bold 속성을 가진다.</td>
+        </tr>
+        <tr>
+          <td>caption</td>
+          <td>테이블 제목</td>
+        </tr>
+        <tr>
+          <td>colgroup</td>
+          <td>셀 전체의 스타일을 지정할 때 사용한다.</td>
+        </tr>
+        <tr>
+          <td>col</td>
+          <td>group의 셀을 지정할 수 있다.</td>
+        </tr>
+        <tr>
+          <td>thead</td>
+          <td>테이블을 구획할때 사용되며 헤더 셀에 많이 사용된다.</td>
+        </tr>
+        <tr>
+          <td>tbody</td>
+          <td>테이블의 데이터가 출력되는 곳</td>
+        </tr>
+        <tr>
+          <td>tfoot</td>
+          <td>합계와 같은 테이블의 마지막을 구획할 때 사용된다.</td>
+        </tr>
+      </tbod>
+  </table>
+</body>
+</html>

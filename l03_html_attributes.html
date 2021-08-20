@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML 속성 수업</title>
+    <style media="screen">
+      body{
+        background: powderblue;
+        margin: 0;
+        padding: 0;
+      }
+      ol li p{
+        color : blue;
+        text-decoration:underline;
+      }
+      ol li p:hover{
+        cursor : pointer;
+      }
+      ol li p:active{
+        color: red;
+      }
+      h1{
+        border: 2px solid black;
+        background: black;
+        color: white;
+        text-align: center;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML Attributes</h1>
+    <ul>
+      <li>모든 요소는 속성을 가진다.</li>
+      <li>모든 요소는 <b>id, class, title, style 속성</b>을 가진다.</li>
+      <li>모든 속성은 요소의 시작 태그에 작성한다.</li>
+      <li>
+        속성의 규칙은 name="value"로 작성한다.<br>
+        "value" or 'value' or value 로 표시 할 수 있다.<br>
+        웹표준은 "value"를 권장한다. (오작동을 막기 위해)
+      </li>
+      <li>style은 html의 속성으로 css를 의미한다.</li>
+    </ul>
+    <hr>
+    <h2>a 하이퍼링크, 링크태그, anchor태그, 하이퍼텍스트</h2>
+    <ol>
+      <li>
+        <a href="https://www.naver.com">NAVER</a> 이동 <br>
+      </li>
+      <li>a태그의 속성 href(HyperText Reference)는 value로 url을 가진다.</li>
+      <li>예) &lta href="url"&gt 지정된 url 주소로 전송된다. </li>
+      <li>
+        방문하지 않은 링크는 밑줄과 파란색<br>
+        방문한 링크는 밑줄과 보라색<br>
+        활성 링크는 밑줄과 빨간색
+      </li>
+      <li onclick="aa()">
+        a 태그의 속성 target의 기본(default) 설정이 존재한다. "_self"<br>
+        _self는 클릭한 링크와 동일한 창/탭에 문서를 연다.<br>
+        _blank는 새 창이나 새 탭에 문서를 연다.<br>
+        <a href="https://www.naver.com" target="_self">NAVER</a> _self 이동<br>
+        <a href="https://www.naver.com" target="_blank">NAVER</a> _blank 이동
+      </li>
+      <li>
+        <p onclick="location.href='https://www.naver.com'">
+          a태그 흉내내기
+        </p>
+      </li>
+      <p style="color:blue; text-decoration:underline;"
+        onmousedown="this.style.color='red'; this.style.cursor='pointer';"
+        onclick="window.location.href='https://www.naver.com'"
+        onmouseup="this.style.color='blue';"
+        >a태그 흉내내기</p>
+
+    </ol>
+  </body>
+</html>

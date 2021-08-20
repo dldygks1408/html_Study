@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML class & id</title>
+  <style media="screen">
+    *{
+      margin: 10;
+    }
+    .btn{
+      text-decoration: none;
+      border-radius: 5px;
+      border: 1px solid powderblue;
+      padding: 10px;
+      margin: 10px;
+      background: powderblue;
+      font-weight: 400;
+      font-size: 20px;
+      color: white;
+    }
+    .btn:hover{
+      background: rgba(42,172,106,.68);
+    }
+    .danger{
+      background: rgb(222,102,3);
+    }
+    .info{
+      background: rgb(34,79,147);
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML class & id</h1>
+  <p>
+    모든 html 요소는 class 와 id 속성을 갖는다. 이때 두 속성은 선택자로 이용된다.
+  </p>
+  <hr>
+  <h2>복수 선택 class</h2>
+  <p>
+    모든 html 요소에 하나 이상의 이름을 가지는 것을 클래스라 한다. <br>
+    이때 클래스는 중복 가능하다.
+  </p>
+  <ol>
+    <li>규칙 : class="이름"</li>
+    <li>규칙 : class="이름1 이름2 이름3 ... " 이름을 여러개 선언 가능</li>
+    <li>규칙 : 선택자로 접근시 .이름{a : a;}</li>
+    <li>
+      javascript 접근 방법 <br>
+      document.getElementsByClassName("className")[n] <br>
+      getElement<b>S</b> s가 붙어 배열형식 <br>
+      class는 복수의 자료를(Document Object) 처리할 때 사용한다.
+    </li>
+  </ol>
+  <div class="test">
+    <h2>동일한 규격의 버튼 만들기</h2>
+    <input type="button" value="버튼" class="btn danger">
+    <input type="submit" value="전송" class="btn info">
+    <button type="button" class="btn">버튼</button>
+    <a href="#" class="btn">Link</a>
+  </div>
+  <hr>
+  <h2>유일한 선택자 id</h2>
+  <ol>
+    <li>규칙 : id="idName" (o)</li>
+    <li>규칙 : id="id_name" (o x)</li>
+    <li>규칙 : id="name" (o x)</li>
+    <li>규칙 : id="01idName" (o x)</li>
+    <li>아이디를 만들때는 단어와 단어의 조합으로
+        시작은 소문자 조합되는 단어는 대문자로 작성한다. <br>
+        (o x) 작동은되지만 권장하지 않는 작성법 <br>
+        권장하는 방식이 document에서 유일할 가능성이 높고 가독성이 높다.
+    </li>
+    <li>규칙 : #idName{color : blue;}</li>
+    <li>규칙 : document.getElementById("idName")</li>
+  </ol>
+</body>
+</html>
