@@ -1,0 +1,51 @@
+body{
+  background: rgb(200, 150, 220);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#boxContainer{
+  background: rgb(180, 170, 210);
+  border: 2px solid rgb(200, 180, 230);
+  border-radius: 20%;
+  
+}
+
+#boxModel{
+  width: 200px;
+  padding: 10px 40px;
+  margin: 40px auto;
+  /* margin : top right bottom left */
+  /* margin : top=bottom  right=left 경우 10px 20px 로 표현 */
+  /* 모든  margin이 같은 경우 margin : 00px */
+  height: 20vh;
+  border: 10px solid black;
+  border-radius: 10px;
+}
+
+#boxContents{
+  border-top : 2px dotted black;
+  border-bottom : 2px dotted red;
+  border-left: 2px double blue;
+  border-right: 2px dashed yellow;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 25px;
+}
+
+table{
+  text-align: center;
+  margin: auto;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+tr td{
+  padding: 30px;
+}
+table thead tr:first-child{
+  background: gray;
+}
+table tr:nth-child(odd){
+  background: powderblue;
+}

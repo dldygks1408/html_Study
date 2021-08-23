@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>html color</title>
+  <style media="screen">
+    #colorBoxContainer div{
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      text-align:center;
+      line-height:100px;
+      border:1px solid black;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #colorBoxContainer{
+      background:gray;
+      padding: 30px;
+      width:100%;
+    }
+    #hexcolorBoxContainer div{
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      text-align:center;
+      line-height:100px;
+      border:1px solid black;
+      /* border color는 color를 따라간다. */
+      margin: 10px;
+      cursor: pointer;
+    }
+    #hexcolorBoxContainer{
+      background:gray;
+      padding: 30px;
+      width:100%;
+    }
+    #hexcolorBoxContainer div:hover{
+      opacity: .5;
+      scale: 1.3;
+    }
+    #colorBoxContainer div:hover{
+      opacity: .5;
+      scale: 1.3;
+    }
+    .imgContainer{
+      width : 100%;
+    }
+    .imgContainer figure img {
+      width : 200px;
+      border : 1px solid black;
+      border-radius: 10px;
+      padding: 2px;
+      margin: 20px;
+    }
+    figure{
+      display : inline-block;
+      margin: auto;
+      text-aling : center;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <h1>html 색</h1>
+    <p>html은 색을 광원의 3색을 조합하는 원리로 표현한다.</p>
+    <article>
+      <h2>RGB Red Green Blue</h2>
+      <p>RGB 색 모형은 빛의 삼원색을 이용하여 색을 표현하는 방식이다.
+      빨강(Red), 초록(Green), 파랑(Blue) 세 종류의 광원을 이용하여 색을 혼합하여
+    색을 섞을수록 밝아지기 때문에 '가산혼합'이라 한다.</p>
+      <p>빨간색, 녹생, 파란색은 0~255 사이의 값으로 색상의 강도를 나타내며
+      256*256*256 = 16777216 색을 표현할 수 있다. </p>
+    </article>
+    <article>
+      <h2>color box 만들기</h2>
+      <div id="colorBoxContainer">
+        <div class="box" style="background-color:rgb(255,0,0);">빨강</div>
+        <div class="box" style="background-color:rgb(0,255,0);">초록</div>
+        <div class="box" style="background-color:rgb(0,0,255);">파랑</div>
+        <div class="box" style="background-color:rgb(250,150,250);">핑크</div>
+        <div class="box" style="background-color:rgb(0,0,0); color:white;">검정</div>
+        <div class="box" style="background-color:rgb(255,255,0);">노랑</div>
+      </div>
+    </article>
+    <article>
+      <h2>hex color box 만들기</h2>
+      <div id="hexcolorBoxContainer">
+        <div class="box" style="background-color:#ff0000;">빨강</div>
+        <div class="box" style="background-color:#00ff00;" >초록</div>
+        <div class="box" style="background-color:#0000ff;" >파랑</div>
+        <div class="box" style="background-color:#ff82ee;" >핑크</div>
+        <div class="box" style="background-color:#000000; color:white;" >검정</div>
+        <div class="box" style="background-color:#ffff00;" >노랑</div>
+      </div>
+    </article>
+    <article>
+      <div class="imgContainer">
+        <figure>
+          <img src="img/rgb01.png" alt=""><br><span>ddd</span>
+        </figure>
+        <figure>
+          <img src="img/rgb02.png" alt=""><br><span>ddd</span>
+        </figure>
+        <figure>
+          <img src="img/rgba01.png" alt=""><br><span>ddd</span>
+        </figure>
+      </div>
+    </article>
+  </main>
+  <script type="text/javascript">
+    // javascript 영역
+    // 순차적 언어로 순서대로 object가 생성된다.
+    // var boxContainer = document.getElementById('colorBoxContainer');
+    // var boxs = boxContainer.getElementsByClassName('box');
+    //var 변수는 객체를 참조
+    var colorBoxs = document.getElementById('colorBoxContainer').getElementsByClassName('box');
+    var boxs = document.getElementsByClassName('box');
+    var hexcolorBoxs = document.getElementById('hexcolorBoxContainer').getElementsByClassName('box');
+
+    for (var i = 0; i < colorBoxs.length; i++) {
+      colorBoxs[i].onmousedown=function(){
+        this.style.opacity = 1;
+        this.style.border = "3px solid black";
+        alert(this.style.backgroundColor);
+        console.log(this.style.backgroundColor);
+      }
+    }
+
+    for(let box of hexcolorBoxs){
+      box.onclick=function(){
+        alert(this.style.backgroundColor);
+        console.log(this.style.backgroundColor);
+      }
+    }
+
+
+    //function(){} 함수 여러 실행구문을 작성하는 곳
+    // console.log( boxContainer );   // 단수 선택자
+    // console.log( boxContainer.getElementsByClassName('box') ); // 복수 선택자
+    // console.log(colorBoxs);
+    // console.log(boxs);
+  </script>
+</body>
+</html>
