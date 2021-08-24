@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Window (BOM)</title>
+  <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Window (BOM) 객체는 브라우저에서 열린 창</h1>
+    <p>script 에서 this로 취급되는 window는 최상위 객체다<br>
+      window.document 로 document는 window 하위 객체고 이때 window는 생략 가능한다. <br>
+      window는 브라우저의 모든 정보를 확인할 수 있는 Brower Object Model이다.
+    </p>
+    <h2>새창 띄우기</h2>
+    <ul>
+      <li>
+        window.open('url','name','specs,replace') : 새 브라우저 or 새창을 연다.
+        <button type="button" onclick="openWindow()">windowOpen</button>
+      </li>
+      <li>
+        windowObject.resizeBy(width,height) : 창의 크기를 현재 크기보다 더 크게 조정한다.
+        <button type="button" onclick="testWindowResizeBy()">windowReSizeBy(600,600)</button>
+      </li>
+      <li>
+        windowObject.resizeTo(width,height) : 창의 크기를 지정된 너비와 높이로 조정한다.
+        <button type="button" onclick="testWindowResizeTo()">windowReSizeTo(300,300)</button>
+      </li>
+      <li>
+        test : 입력받은 크기로 testWindow 크기 조정<br>
+        <form name="testwindowResize" action="#" method="post">
+          가로 : <input type="text" name="winWidth" value="500" size="30"><br>
+          세로 : <input type="text" name="winHeight" value="600" size="30"><br>
+          <button type="button" name="button" onclick="testHW()">변경</button>
+        </form>
+      </li>
+      <li>moveBy(x, y) : 현재 위치를 기준으로 창을 이동</li>
+      <li>moveTo(x, y) : 창을 지정 위치로 이동</li>
+      <li>
+        test : 입력받은 크기로 testWindow 위치 조정<br>
+        <form name="winMove" action="#" method="post">
+          가로 : <input type="text" name="moveX" value="500" size="30"><br>
+          세로 : <input type="text" name="moveY" value="600" size="30"><br>
+          <button type="button" name="button" onclick="testWindow.moveTo(winMove.moveX.value, winMove.moveY.value)">
+            변경
+          </button>
+        </form>
+      </li>
+    </ul>
+    <h2>함수를 주기적으로 호출하기</h2>
+    <ul>
+      <b>window 안에 있는 함수</b>
+      <li>setInterval(function,milliseconds) : 함수를 지정 간격(밀리초)으로 호출</li>
+      <li>clearInterval(intervalObject) : 인터벌 함수의 타이머를 초기화</li>
+      <li>++num : <span id="intervalNum">  </span></li>
+      <li>
+        <button type="button" onclick="btnPlus()">
+          1초마다 증가
+        </button><span id="numPlus"></span>
+        <button type="button" onclick="btnStop()"> 스탑</button>
+      </li>
+      <li><button type="button" onclick="">시간보기</button>시간 : <b id="interClock"></b><button type="button" onclick=""> 스탑</button></li>
+    </ul>
+    <h2>함수를 특정 시간에 호출</h2>
+    <ul>
+      <li>setTimeout(function,milliseconds) : 지정된 시간에 함수를 한번 호출</li>
+      <li>claerTimeout(timeOutObject) : 지정된 시간에 함수를 호출하기 전에 멈추는 함수</li>
+      <li><button type="button" onclick="window.setTimeout(function(){alert('5초 지남')},5000);"> 5초뒤 경고창 </button></li>
+      <li><button type="button" id="interTimeO"> 5초뒤 경고창 </button></li>
+    </ul>
+    <h2>브라우저의 크기와 위치 정보(수정불가)</h2>
+    <ul>
+      <li> screenX, screenY(screenLeft, screenTop) : 브라우저의 x, y좌표 </li>
+      <li> outerWidth, outerHeight : 모든 인터페이스 요소를 포함한 브라우저의 너비와 높이 </li>
+      <li> innerWidth, innerHeight : 스크롤 막대를 포함한 창의 크기(뷰포트) </li>
+    </ul>
+    <h2>브라우저의 방문 기록(history)</h2>
+    <p>window.history는 사용자가 방문한 URL을 포함한다.</p>
+    <ul>
+      <li>history.lenth 히스토리 목록의 URL 수 (max : 50, 읽기전용)</li>
+      <li>history.back() : 히스토리 목록에서 이전 URL을 로드 (뒤로가기)</li>
+      <li>history.foward() : 히스토리 목록에서 다음 URL을 로드 (앞으로가기)</li>
+      <li>history.go(num) : 특정 기록목록에 URL로 로드</li>
+    </ul>
+    <h2>위치객체 location</h2>
+    <p>window.location은 url정보가 포함되어 있다.</p>
+    <ul>
+      <li>location.href : 현재 페이지를 반환하고 특정 페이지로 이동</li>
+      <li>location.hostname : 현재 url의 호스트 이름을 반환한다.</li>
+      <li>location.reload() : 현재 문서를 새로고침한다.</li>
+    </ul>
+  </main>
+  <script type="text/javascript">
+    var interNum = document.getElementById('interTimeO');
+
+    function clearStop(){
+
+    }
+    function testOut(){
+
+    }
+    setTimeout(testOut,2000);
+    // new Date();
+    // 대문자로 시작하는 이름은 ()는 클래스의 생성자
+    // 소문자로 시작하는 이름은 ()는 함수
+    // Date는 객체지향 언어에서 클래스라 부르는 객체
+    // Class가 객체로 생성되려면 생성자라는 클래스와 동일한 이름의 생성자(함수?)를 호출
+    // 앞에 new ClassName(); 클래스로 객체 생성
+    // 객체는 출력될 수 있는데 이 때 .toStrong()함수(문자열 반환) 을 생락 할 수 있다.
+    function interClock(){
+      var date = new Date();
+      var time = date.toLocaleTimeString();
+      document.getElementById('interClock').innerHTML=time;
+    }
+    setInterval(interClock,1000);
+    // var interNum = document.getElementById('intervalNum');
+    // var num=0;
+    // function incrNum(){
+    //   interNum.innerHTML = ++num;
+    // }
+    // setInterval(incrNum,1000);
+    var numP = 0;
+    var interNumDom = document.getElementById('numPlus');
+    var intervalObject;
+
+    function test(){
+      intervalObject.innerHTML = numP++;
+    }
+
+    function btnPlus(){
+      window.setInterval(function(){
+          interNumDom.innerHTML = "　　" + numP++ +"　　";
+      }, 1000);
+    }
+
+    function btnStop(){
+      window.clearInterval(intervalObject);
+    }
+
+    var num = 0;
+    window.setInterval(function(){
+        document.getElementById('intervalNum').innerHTML = num++;
+    }, 1000);
+
+
+
+
+    var testWindow; //참조
+    function openWindow(){
+      testWindow=window.open('','test','width=200,height=200');
+      testWindow.moveBy(200,200);
+    }
+    function testWindowResizeBy(){
+      testWindow.resizeBy(600,600);
+    }
+    function testWindowResizeTo(){
+      testWindow.resizeTo(300,300);
+    }
+    function testHW(){
+      testWindow.resizeTo(document.forms.testwindowResize.winWidth.value, document.forms.testwindowResize.winWidth.value);
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/index.css">
+  <style media="screen">
+    #imgMove{
+      color: white;
+      position: fixed;
+      top: 330px;
+      left: 35%;
+      transition: 1s;
+    }
+  </style>
+</head>
+<body>
+  <form class="box" method="post" name="frm">
+    <h1>LOGIN</h1>
+    <input type="text" id="UserName" placeholder="UserName" onfocus="go1()">
+    <input type="password" id="UserPwd" placeholder="Password" onfocus="go2()">
+    <input type="submit" value="LOGIN" id="UserLogin">
+  </form>
+  <div id="imgMove">
+    ●이동시키자
+  </div>
+  <script type="text/javascript">
+    var imgMove = document.getElementById('imgMove');
+    var focusMove = document.getElementById('UserName');
+    function go1(){
+      imgMove.style.top = "390px";
+      imgMove.style.left = "25%";
+    }
+    function go2(){
+      imgMove.style.top = "460px";
+      imgMove.style.left = "25%";
+    }
+
+    console.log( focusMove );
+  </script>
+</body>
+</html>

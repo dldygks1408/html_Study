@@ -1,0 +1,65 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-image: url("../img/bg01.jpg");
+  background-repeat: round;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}
+.box{
+  width: 300px;
+  position: absolute;   /* 확 인 */
+  top: 50%;
+  left: 50%;
+  background: #1f1f10;
+  text-align: center;
+  padding: 40px;
+  transform: translate(-50%,-50%);   /* 확 인 */
+}
+.box h1{
+  color: white;
+  text-transform: uppercase;  /* 확 인 */
+  font-weight: 400;
+}
+
+.box input[type="text"], .box input[type="password"]{
+  border: 0;
+  background: none;
+  display: block;
+  margin: 25px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;   /* 확 인 */
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;   /* 확 인 */
+}
+
+.box input[type="text"]:focus, .box input[type="password"]:focus{
+  width: 290px;
+  border: 2px solid #2ecc71;
+}
+
+.box input[type="submit"]{
+  border: 0;
+  background: none;
+  display: block;
+  margin: 25px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  width: 140px;
+  outline: none;   /* 확 인 */
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;   /* 확 인 */
+  cursor: pointer;
+}
+.box input[type="submit"]:hover{
+  background-color: #2ecc71;
+}
