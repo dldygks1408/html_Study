@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML form</title>
+  <style media="screen">
+
+  </style>
+</head>
+<body>
+  <main>
+    <!-- <h1>html 제출 양식 form</h1>
+    <p>HTML 양식은 사용자 입력을 수집하기 위해 사용된다. 회원가입, 설문조사, 로그인 등 사용된다.
+      <br>양식(form)에 입력한 복수의 데이터(파라미터)는 처리를 위해 서버로 전송(method=post)된다.
+    </p>
+    <article>
+      <h2>form 태그</h2>
+      <p>form 요소는 사용자 입력을 위한 html 양식을 만드는데 사용되며 입력 양식을 1개 이상 포함하는 컨테이너다.
+        <br>이때 입력 양식에는 text field, checkboxs, radio, submit... 이 있다.
+        <br>form 과 입력 요소는 모두 name을 갖고 있고 이 name은 파라미터 이름으로 서버에 전송된다.
+        <br>예) url?name=value&name2=value2 ← method = get 방식
+        <br>document.forms["formName"]["inputName"]로 element를 참조 할 수 있기때문에 formName은 아이디처럼 유일한 값
+        <br>(document.forms.formName.inputName.value) 위와 동일
+      </p>
+      <h3>form 태그 속성</h3>
+      <ul>
+        <li>action : 양식을 제출하는 url 위치 ex)action="index.html"</li>
+        <li>method : 양식 데이터를 보낼때 통신(http)
+          <ul>
+            <li>method = "GET" (default) : url에 파라미터를 이름/값 쌍을 추가하는 방법
+              <br>url에 파라미터가 노출되므로 안전하지 않다.
+              <br>ex)url?name=value&name=value</li>
+            <li>method = "POST" : 양식 파라미터를 서버에 보낼때 HTTP 포스트 트랜잭션에 추가해서 보낸다.
+              <br>파라미터가 안전하다.
+              <ul>
+                <li>_self(default) : 동일한 프레임(창)에 표시</li>
+                <li>_blank : 새 창이나 프레임에 표시</li>
+                <li>_parent : 상위 프레임에 표시</li>
+                <li>_top : 창 전체에 표시</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>name : html 문서에서 유일한 이름이여야 한다.</li>
+        <li>autocomplete : 입력 양식의 자동완성 (autocomplete="on | off")</li>
+        <li>novalidate : 양식 제출 시 유효성 검사를 하지 않도록 지정한다.</li>
+        <li>target : 양식 제출 시 받은 응답을 표시 할 창의 위치
+          <br>양식을 서버에 제출하면 양식을 처리 후 이동할 페이지를 반환
+          <br> ex)로그인 후 지정페이지로 이동해라, 실패하면 제자리에 있어라 상태에 따라 이동할(응답) 페이지가 다르다.
+        </li>
+        <li>enctype : 양식 데이터를 서버에 제출할 때 인코딩 방식을 지정
+          <br> GET-url : 인코딩이 고정 , POST만 변경 가능
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>입력 양식 요소</h2>
+      <p>input은 입력양식요소의 대표이며 여러 타입의 값을 전달 할 수 있다.
+        <br>모든 입력 양식 요소는 name과 value를 가지며 양식을 제출(submit)할 때 url or 포스트트랜잭션에 추가된다.
+      </p>
+      <ul>
+        <li>input : 다양한 입력 type 이 존재하는 입력 요소
+          <input type="datetime-local" onclick="console.log(this.value)">
+        </li>
+        <li>textarea : <textarea name="name" rows="2" cols="80"></textarea></li>
+        <li>select : 드롭다운 목록 (optgroup : 목록을 다시 그룹으로 정의)
+          <select class="" name="">
+            <optgroup label="frontend">
+              <option value="html">html</option>
+              <option value="css">css</option>
+              <option value="js">javascript</option>
+            </optgroup>
+            <optgroup label="backend">
+              <option value="java">Java</option>
+              <option value="c">C</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>datalist : 입력하기 전에 미리 정의된 옵션 목록을 지정
+          <input list="program">
+          <datalist id="program">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JavaScript</option>
+          </datalist>
+        </li>
+        <li>button : 클릭이 가능한 버튼 <button type="button" name="button">버튼</button></li>
+        <li>label : 입력 요소에 라벨 정의(입력요소 id == lavel.for  or label>입력요소)
+          <br><label for="labelTest">labelTest</label> ← 클릭해도 for 지정해둬서 클릭 가능하다
+          <br><input type="checkbox" name="labelTest" value="클릭" id="labelTest">클릭
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>input 태그가 가지는 여러 타입의 입력요소</h2>
+      <ul>
+        <li>type="text :" 한줄 텍스트를 정의 <input type="text"></li>
+        <li></li>
+        <li>type="email" : 이메일을 입력하는 필드(제출시 유효성 검사)
+          <form>
+            <input type="email"><input type="submit" value="제출">
+          </form>
+        </li>
+        <li>type="url" : url을 입력하는 필드 (제출시 유효성 검사)
+          <form>
+            <input type="url">
+            <input type="submit" value="제출">
+          </form>
+        </li>
+        <li>type="password" : 입력한 문자를 암호화시킨다.
+          <input type="password">
+        </li>
+        <li>type="number" : 숫자를 입력하는 필드
+          <input type="number" >
+        </li>
+        <li>type="button" : 클릭이 가능한 버튼(자바스크립트로 정의함)
+          <input type="button" value="버튼">
+        </li>
+        <li>type="submit" : action에 정의된 페이지(서버)로 양식 제출
+          <input type="submit" name="" value="submit">
+        </li>
+        <li>type="reset" : value를 재설정 하는 버튼 (reset()실행)
+          <input type="reset" value="reset">
+        </li>
+        <li>type="range" : 범위를 제어하는 컨트롤 UI 제공
+          <input type="range" name="" value="60" max="100" min="10" step="10">
+        </li>
+        <li>type="checkbox" : 선택한 파라미터만 전달
+          <br><label><input type="checkbox" name="checkTest1" value="param1">checkBox 1</label>
+          <label><input type="checkbox" name="checkTest2" value="param2">checkBox 2</label>
+          <label><input type="checkbox" name="checkTest3" value="param3">checkBox 3</label>
+        </li>
+        <li>type="radio" : 같은 이름의 파라미터가 복수의 value 중 하나만 선택해서 전달 (선택목록 name이 같아야한다.)
+          <br><label><input type="radio" name="radioTest" value="param1">checkBox 1</label>
+          <label><input type="radio" name="radioTest" value="param2">checkBox 2</label>
+          <label><input type="radio" name="radioTest" value="param3">checkBox 3</label>
+        </li>
+        <li>type="color" : color 선택 UI 제공
+          <input type="color">
+        </li>
+        <li>type="datetime-local" : 데이트픽커 UI제공 value="2021-08-21T17:06"
+          <input type="datetime-local" name="" value="">
+        </li>
+        <li>type="date" : value="2021-08-21" </li>
+        <li>type="month" : value="2021-08"</li>
+        <li>type="week" : value="2021-w34"</li>
+        <li>type="time" : value="hh:mm"</li>
+        <li>type="file" : 파일 업로드(탐색기 제공)
+          <input type="file" name="" value="">
+        </li>
+        <li>type="hidden" : 숨겨진 파라미터 → 옆에 안보이지롱
+          <input type="hidden" name="" value="">
+        </li>
+      </ul>
+    </article> -->
+    <article>
+      <h2>form 양식 선택자 Test</h2>
+      <p>table 리스트에서 수정버튼을 누르면 리스트의 회원정보를 회원 수정 form 양식에 가져와라</p>
+      <form name="memberInsert" method="post">
+        <fieldset>
+          <label>회원 수정 form</label>
+          <p>num : <input type="text" id="num1" name="num" value="11" readonly></p>
+          <p>id : <input type="text" id="num2" name="id" value="" readonly></p>
+
+          <p>tel : <input type="text" id="num3" name="tel" value=""></p>
+          <p>grade : <input type="number" id="num4" name="grade" value=""></p>
+          <p>실적 : <input type="number"  id="num5" name="score" value=""></p>
+          <p id="num6">gender :
+            <label>female<input type="radio" name="gender" value="f" id="checkF"></label>
+            <label>male<input type="radio" name="gender" value="m" id="checkM"></label>
+          </p>
+          <p><input type="button" value="수정하기" onclick="">
+            <input type="reset" value="재설정">
+          </p>
+        </fieldset>
+      </form>
+      <h3>회원 리스트</h3>
+      <!-- table>(thead>tr>th{num}+th{tel}+th{grade (0~5)}+th{gender (m, f)}+th{실적(0~100)}+th{수정})>(tbody>tr>(td{$$})+td{id_}+td{010}+td{0}+td{f}+td{50}+td{<button type="button" name="button"></button>})*5 -->
+      <table border="1" width="100%" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>num</th>
+            <th>id</th>
+            <th>tel</th>
+            <th>grade (0~5)</th>
+            <th>실적(0~100)</th>
+            <th>gender (m, f)</th>
+            <th>수정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="tr1">
+            <td>01</td>
+            <td>id_aaa</td>
+            <td>010-1111-1111</td>
+            <td>1</td>
+            <td>10</td>
+            <td>m</td>
+            <td>
+              <button type="button" name="button" onclick="testForm()">수정하기</button>
+            </td>
+          </tr>
+          <tr id="tr2">
+            <td>02</td>
+            <td>id_bbb</td>
+            <td>010-2222-2222</td>
+            <td>3</td>
+            <td>40</td>
+            <td>f</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+          <tr id="tr3">
+            <td>03</td>
+            <td>id_ccc</td>
+            <td>010-3333-3333</td>
+            <td>2</td>
+            <td>20</td>
+            <td>f</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+          <tr id="tr4">
+            <td>04</td>
+            <td>id_ddd</td>
+            <td>010-4444-4444</td>
+            <td>4</td>
+            <td>20</td>
+            <td>f</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+          <tr id="tr5">
+            <td id="tableTD">05</td>
+            <td>id_eee</td>
+            <td>010-5555-5555</td>
+            <td>5</td>
+            <td>10</td>
+            <td>m</td>
+            <td>
+              <button type="button" name="button" onclick="abcd()">수정하기</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </main>
+<script>
+
+
+// function abcd(){
+//   var ii = document.getElementById('num1');  //input
+//   var iiii = document.getElementById('tableTD').innerText; //05
+//   ii.value = iiii;
+// }
+// console.log(document.getElementById('num1').value);
+
+
+
+
+// for (var i = 1; i <= 6; i++) {
+//   console.log(document.querySelector('#tr1>td:nth-child('+i+')'));
+//   console.log(i);
+// }
+
+
+
+
+function testForm(){
+  for (var j = 1; j <= 5; j++) {
+    for (var i = 1; i <= 6; i++) {
+      var testSu = document.querySelector('#tr'+ j +'>td:nth-child(' + i + ')').innerText;
+      document.getElementById('num'+i).value = testSu;
+      if(i == 6){
+        if(testSu === "m"){
+          document.getElementById('checkM').checked = true;
+          console.log('나오냐?');
+        }else {
+          document.getElementById('checkF').checked = true;
+        }
+      }
+      console.log(testSu);
+    }
+  }
+}
+
+function testForm(){
+    for (var i = 1; i <= 6; i++) {
+      var testSu = document.querySelector('#tr'>td:nth-child(' + i + ')').innerText;
+      document.getElementById('num'+i).value = testSu;
+      if(i == 6){
+        if(testSu === "m"){
+          document.getElementById('checkM').checked = true;
+          console.log('나오냐?');
+        }else {
+          document.getElementById('checkF').checked = true;
+        }
+      }
+      console.log(testSu);
+    }
+  }
+}
+
+
+
+
+
+
+// console.log(document.getElementById('num1').value);
+// var te = document.getElementById('num1').value;
+// document.getElementById('1111').innerHTML = te;
+</script>
+</body>
+</html>
