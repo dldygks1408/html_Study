@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>HTML form</title>
   <style media="screen">
+#tr1>td:nth-child(1){
 
+}
   </style>
 </head>
 <body>
@@ -161,7 +163,7 @@
       <form name="memberInsert" method="post">
         <fieldset>
           <label>회원 수정 form</label>
-          <p>num : <input type="text" id="num1" name="num" value="11" readonly></p>
+          <p>num : <input type="text" id="num1" name="num" value="" readonly></p>
           <p>id : <input type="text" id="num2" name="id" value="" readonly></p>
 
           <p>tel : <input type="text" id="num3" name="tel" value=""></p>
@@ -171,7 +173,7 @@
             <label>female<input type="radio" name="gender" value="f" id="checkF"></label>
             <label>male<input type="radio" name="gender" value="m" id="checkM"></label>
           </p>
-          <p><input type="button" value="수정하기" onclick="">
+          <p><input type="button" value="수정하기" id="submitTest">
             <input type="reset" value="재설정">
           </p>
         </fieldset>
@@ -199,7 +201,7 @@
             <td>10</td>
             <td>m</td>
             <td>
-              <button type="button" name="button" onclick="testForm()">수정하기</button>
+              <button type="button" name="button" onclick="testForm(1)">수정하기</button>
             </td>
           </tr>
           <tr id="tr2">
@@ -208,9 +210,9 @@
             <td>010-2222-2222</td>
             <td>3</td>
             <td>40</td>
-            <td>f</td>
+            <td>m</td>
             <td>
-              <button type="button" name="button">수정하기</button>
+              <button type="button" name="button" onclick="testForm(2)">수정하기</button>
             </td>
           </tr>
           <tr id="tr3">
@@ -221,7 +223,7 @@
             <td>20</td>
             <td>f</td>
             <td>
-              <button type="button" name="button">수정하기</button>
+              <button type="button" name="button" onclick="testForm(3)">수정하기</button>
             </td>
           </tr>
           <tr id="tr4">
@@ -232,18 +234,18 @@
             <td>20</td>
             <td>f</td>
             <td>
-              <button type="button" name="button">수정하기</button>
+              <button type="button" name="button" onclick="testForm(4)">수정하기</button>
             </td>
           </tr>
           <tr id="tr5">
-            <td id="tableTD">05</td>
+            <td>05</td>
             <td>id_eee</td>
             <td>010-5555-5555</td>
             <td>5</td>
             <td>10</td>
             <td>m</td>
             <td>
-              <button type="button" name="button" onclick="abcd()">수정하기</button>
+              <button type="button" name="button" onclick="testForm(5)">수정하기</button>
             </td>
           </tr>
         </tbody>
@@ -251,69 +253,54 @@
     </article>
   </main>
 <script>
-
-
-// function abcd(){
-//   var ii = document.getElementById('num1');  //input
-//   var iiii = document.getElementById('tableTD').innerText; //05
-//   ii.value = iiii;
+// ────────────데이터 읽어오기 / 데이터는 다불러오는데 실패... ──────────────
+// function testForm(){
+//   for (var j = 1; j <= 5; j++) {
+//     for (var i = 1; i <= 6; i++) {
+//       var testSu = document.querySelector('#tr'+ j +'>td:nth-child(' + i + ')').innerText;
+//       document.getElementById('num'+i).value = testSu;
+//       if(i == 6){
+//         if(testSu === "m"){
+//           document.getElementById('checkM').checked = true;
+//         }else {
+//           document.getElementById('checkF').checked = true;
+//         }
+//       }
+//       console.log(testSu);
+//     }
+//   }
 // }
-// console.log(document.getElementById('num1').value);
 
-
-
-
-// for (var i = 1; i <= 6; i++) {
-//   console.log(document.querySelector('#tr1>td:nth-child('+i+')'));
-//   console.log(i);
-// }
-
-
-
-
-function testForm(){
-  for (var j = 1; j <= 5; j++) {
-    for (var i = 1; i <= 6; i++) {
-      var testSu = document.querySelector('#tr'+ j +'>td:nth-child(' + i + ')').innerText;
-      document.getElementById('num'+i).value = testSu;
-      if(i == 6){
-        if(testSu === "m"){
-          document.getElementById('checkM').checked = true;
-          console.log('나오냐?');
-        }else {
-          document.getElementById('checkF').checked = true;
-        }
+// ──────────── 데이터 읽어오기 ──────────────
+function testForm(testA){
+  for (var i = 1; i <= 6; i++) {
+    var testSu = document.querySelector('#tr' + testA + '>td:nth-child(' + i + ')').innerText;
+    document.getElementById('num'+i).value = testSu;
+    if(i == 6){
+      if(testSu === "m"){
+        document.getElementById('checkM').checked = true;
+      }else {
+        document.getElementById('checkF').checked = true;
       }
-      console.log(testSu);
     }
+    console.log(testSu);
   }
 }
-
-function testForm(){
-    for (var i = 1; i <= 6; i++) {
-      var testSu = document.querySelector('#tr'>td:nth-child(' + i + ')').innerText;
-      document.getElementById('num'+i).value = testSu;
-      if(i == 6){
-        if(testSu === "m"){
-          document.getElementById('checkM').checked = true;
-          console.log('나오냐?');
-        }else {
-          document.getElementById('checkF').checked = true;
-        }
+// ──────────── table 수정하기 ──────────────
+document.getElementById('submitTest').addEventListener('click', function(){
+  var aaaa  = document.getElementsByTagName('tagName')
+  for (var i = 1; i <= 6; i++) {
+    var tableHTML = document.getElementById('num'+i).value;
+    var tableGender = document.querySelector('#tr1>td:nth-child(6)').innerText;
+    document.querySelector('#tr1>td:nth-child(' + i + ')').innerHTML = tableHTML;
+    console.log(tableGender);
+      if(tableGender === "m"){
+        document.querySelector('#tr1>td:nth-child(6)').innerHTML = "m";
+      }else if(tableGender === "f"){
+        document.querySelector('#tr1>td:nth-child(6)').innerHTML = "f";
       }
-      console.log(testSu);
-    }
   }
-}
-
-
-
-
-
-
-// console.log(document.getElementById('num1').value);
-// var te = document.getElementById('num1').value;
-// document.getElementById('1111').innerHTML = te;
+});
 </script>
 </body>
 </html>

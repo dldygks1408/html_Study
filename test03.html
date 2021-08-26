@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML form</title>
+</head>
+<body>
+  <main>
+    <article>
+      <h2>form 양식 선택자 Test</h2>
+      <p>table 리스트에서 수정버튼을 누르면 리스트의 회원정보를 회원 수정 form 양식에 가져와라</p>
+      <form name="memberInsert" method="post">
+        <fieldset>
+          <label>회원 수정 form</label>
+          <p>num : <input type="text" name="num" value="" readonly></p>
+          <p>id : <input type="text" name="id" value="" readonly></p>
+          <p>tel : <input type="text" name="tel" value=""></p>
+          <p>grade : <input type="number" name="grade" value=""></p>
+          <p>실적 : <input type="number" name="score" value=""></p>
+          <p>gender :
+            <label>female<input type="radio" name="gender" value="f" id="checkF"></label>
+            <label>male<input type="radio" name="gender" value="m" id="checkM"></label>
+          </p>
+          <p><input type="button" value="수정하기" id="submitTest">
+            <input type="reset" value="재설정">
+          </p>
+        </fieldset>
+      </form>
+      <h3>회원 리스트</h3>
+      <!-- table>(thead>tr>th{num}+th{tel}+th{grade (0~5)}+th{gender (m, f)}+th{실적(0~100)}+th{수정})>(tbody>tr>(td{$$})+td{id_}+td{010}+td{0}+td{f}+td{50}+td{<button type="button" name="button"></button>})*5 -->
+      <table border="1" width="100%" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>num</th>
+            <th>id</th>
+            <th>tel</th>
+            <th>grade (0~5)</th>
+            <th>실적(0~100)</th>
+            <th>gender (m, f)</th>
+            <th>수정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- level 1 -->
+          <tr>
+            <td>01</td>
+            <td>id_aaa</td>
+            <td>010-1111-1111</td>
+            <td>1</td>
+            <td>10</td>
+            <td>m</td>
+            <td>
+              <form name="id_aaa" method="post">
+                <input type="hidden" name="num" value="01">
+                <input type="hidden" name="id" value="id_aaa">
+                <input type="hidden" name="tel" value="010-1111-1111">
+                <input type="hidden" name="grade" value="1">
+                <input type="hidden" name="score" value="10">
+                <input type="hidden" name="gender" value="m">
+                <button type="button" name="button"
+                onclick="console.log(this.form.num.value)">수정하기</button>
+              </form>
+            </td>
+          </tr>
+
+          <tr id="id_bbb">
+            <td class="num">02</td>
+            <td class="id">id_bbb</td>
+            <td class="tel">010-2222-2222</td>
+            <td class="grade">3</td>
+            <td class="score">40</td>
+            <td class="gender">m</td>
+            <td>
+              <button type="button" name="button"
+                onclick="insertForm('id_bbb')"
+              >수정하기</button>
+            </td>
+          </tr>
+<script>
+  function insertForm(id){
+    // console.log(document.getElementById(id).getElementsByClassName("id")[0].innerText);
+    // var test2 = document.querySelector("#"+id+"")
+    console.log(document.querySelector("#"+id+">td").innerText);
+  }
+</script>
+          <tr>
+            <td>03</td>
+            <td>id_ccc</td>
+            <td>010-3333-3333</td>
+            <td>2</td>
+            <td>20</td>
+            <td>f</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>id_ddd</td>
+            <td>010-4444-4444</td>
+            <td>4</td>
+            <td>20</td>
+            <td>f</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+          <tr>
+            <td id="tableTD">05</td>
+            <td>id_eee</td>
+            <td>010-5555-5555</td>
+            <td>5</td>
+            <td>10</td>
+            <td>m</td>
+            <td>
+              <button type="button" name="button">수정하기</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </main>
+<script>
+ // console.log(document.forms.memberInsert.num.value);
+
+console.log();
+
+</script>
+</body>
+</html>
