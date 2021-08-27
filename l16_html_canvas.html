@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>html canvas</title>
+<style media="screen">
+
+canvas{
+  border: 1px solid black;
+}
+canvas{
+  background:linear-gradient(to left, red,orange,yellow,green,blue,indigo,violet);
+  transition: all 5s ease-out;
+}
+</style>
+</head>
+<body>
+  <main>
+    <h1>html canvas</h1>
+    <p>canvas는 웹 페이지에 그래픽을 그려주는 컨테이너이다.
+      canvas는 자바스크립트로 그래픽을 그린다.
+    </p>
+    <article>
+      <div class="canvas_container">
+        <h1>strokeReck (x1,y1,x2,x2) 사각형 그리기</h1>
+        <ul>
+          <li>fillStyle : 색이 있는 사각형 색 지정</li>
+          <li>fillRect : 색이 있는 사각형 그리기</li>
+          <li>strokeRect : 사각형 테두리 그리기</li>
+          <li>clearRect : 사각형 모양 지우개</li>
+        </ul>
+        <canvas id="canvas1" width="300" height="300">
+          웹브라우저가 canvas를 지원하지 않습니다!(라는 문자만 출력)
+        </canvas>
+      </div>
+<script>
+var c1 = document.getElementById('canvas1').getContext("2d");
+c1.shadowBlur = 10;
+c1.shadowColor = "black";
+c1.strokeRect(20,20,200,200);
+
+c1.shadowBlur = 20;
+c1.shadowColor = "rgba(0,0,0,.5)";
+c1.shadowOffsetX = 15;
+c1.shadowOffsetY = 15;
+c1.fillStyle="rgba(100,200,255,1)"; //fillRect의 색 지정
+c1.fillRect(160,160,100,100);
+
+c1.clearRect(80,80,100,100);
+
+c1.shadowBlur = 10;
+c1.shadowColor = "green";
+c1.shadowStyle="red";
+c1.lineWidth=5;
+c1.strokeRect(10,10,200,200);
+
+</script>
+    </article>
+    <article>
+      <h2>lineTo선그리기</h2>
+      <ul>
+        <li>moveTo : 선이 시작될 좌표</li>
+        <li>lineTo : 선이 끝나는 좌표(연속으로 지정할 수 있다)</li>
+        <li>stroke : 선 그리기 시작</li>
+      </ul>
+      <div class="canvas_Container">
+        <canvas id="canvas2" width="300" height="300"></canvas>
+      </div>
+    </article>
+<script>
+var c2 = document.getElementById('canvas2').getContext("2d");
+c2.moveTo(150,0);
+c2.lineTo(300,300);
+c2.lineTo(0,100);
+c2.lineTo(300,100);
+c2.lineTo(0,300);
+c2.lineTo(150,0);
+c2.fillStyle="powderblue";
+c2.fill();
+c2.stroke(); //lineTo로 지정한 좌표를 순서대로 따라다니며 그린다
+</script>
+    <article>
+      <h2>Colors, Styles, Shadows 속성 추가</h2>
+      <ul>
+        <li>fillStyle : 색, 공간기울기색(gradient), 패턴을 채우는 설정</li>
+        <li>strokeStyle : 색, 공간기울기색(gradient), 패턴을 그리는 설정(lineWidth로 두께 설정)</li>
+        <li>shadowColor : 그림자색 </li>
+        <li>shadowBlur : 그림자 흐려짐 정도 </li>
+        <li>shadowOffsetX : 그림자 x 축 이동 (양수일때 오른쪽 이동, 음수일때 왼쪽 이동)</li>
+        <li>shadowOffsetY : 그림자 y 축 이동 (양수일때 아래쪽 이동, 음수일때 위쪽 이동)</li>
+      </ul>
+      <div class="canvas_Container">
+        <canvas id="canvas3" width="300" height="300"></canvas>
+      </div>
+    </article>
+<script>
+var c3 = document.getElementById('canvas3').getContext("2d");
+c3.shadowBlur = 5;
+c3.shadowColor = "rgba(0,0,0,0.9)";
+c3.shadowOffsetX = 20;
+c3.shadowOffsetY = 10;
+c3.lineWidth=5;
+c3.strokeStyle="rgb(150,100,150)";
+c3.strokeRect(75,75,150,150);
+
+c3.shadowBlur=10;
+c3.shadowColor="rgba(50,10,50,1)";
+c3.shadowOffsetX=-20;
+c3.shadowOffsety=-20;
+c3.fillStyle = "rgba(200,100,200,.6)";
+c3.fillRect(75,75,150,150);
+</script>
+    <article>
+      <h2>Gradient 번지는 색</h2>
+      <p>createLinearGradient(x0,y0,x1,y1)</p>
+      <ul>
+        <li>x0 : Gradient 시작점 x 좌표</li>
+        <li>y0 : Gradient 시작점 y 좌표</li>
+        <li>x1 : Gradient 끝점 x 좌표</li>
+        <li>y1 : Gradient 끝점 y 좌표</li>
+      </ul>
+      <div class="canvas_Container">
+        <canvas id="canvas4" width="300" height="300" />
+      </div>
+    </article>
+<script>
+var c4 = document.getElementById('canvas4').getContext("2d");
+var gradient = c4.createLinearGradient(0,0,200,0);
+gradient.addColorStop(0,"rgb(0,0,0)");
+gradient.addColorStop(1,"rgb(255,255,255)");
+
+c4.shadowBlur = 5;
+c4.shadowColor = "rgba(0,0,0,0.9)";
+c4.shadowOffsetX = 25;
+c4.shadowOffsetY = 20;
+c4.fillStyle=gradient;
+c4.font="60px Arial black";
+c4.fillText("CANVAS",0, 170);
+</script>
+
+  </main>
+</body>
+</html>

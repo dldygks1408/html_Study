@@ -179,7 +179,7 @@ function alphabetChange(selectObject){
         <input type="checkbox" name="test" value="box3">
       </label>
       <label>체크 4:
-        <input type="checkbox" name="test" value="box4">
+        <input type="checkbox" name="test" value="box4" >
       </label>
       <label>전체선택:
         <input type="checkbox" name="selectAll" value="all">
@@ -191,11 +191,11 @@ function alphabetChange(selectObject){
       </p>
     </form>
 <script>
-
 var formMain = document.forms.frm.test;
 var formAll = document.forms.frm.selectAll;
 // ───────────────전체선택 체크 & 출력────────────────
-formAll.addEventListener('click', function (){
+formAll.addEventListener('click', function (e){
+  console.log(e.target);
   for (var i = 0; i < formMain.length; i++) {
     (formAll.checked == true) ?
     formMain[i].checked=true  :
@@ -209,7 +209,6 @@ formAll.addEventListener('click', function (){
     }
   }
 });
-
 // ───────────────박스 체크 & 출력────────────────
 for (var aa of formMain) {
   aa.addEventListener('click', function (){
